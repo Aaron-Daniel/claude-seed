@@ -47,8 +47,3 @@ Fifteen sections, in four groups.
 - PR review paradigm — build agent and review agent, never self-approve
 - Task-completion recap — what shipped, what is still running, what is left
 
-## Where it came from
-
-Assembled from two working project files and cut down: rules kept, project specifics
-and past incidents removed, then audited to confirm nothing of substance was lost in
-the compression.
