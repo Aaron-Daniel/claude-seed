@@ -255,8 +255,15 @@ asserts, before the code exists.
 
 ## Build and decision logs are append-only
 
-The repo's `CLAUDE.md` names where the log lives. It records how the project was built:
-what was tried, what worked, what did not.
+**Everything built keeps one** — every project, and anything substantial built inside
+one: a skill, a pipeline, a model or prompt that gets tuned. It records how the thing
+was built: what was tried, what worked, what did not, and why the approach changed. If
+there is no build log yet, starting one is part of the first real piece of work. The
+repo's `CLAUDE.md` names where it lives.
+
+It exists because the reasoning behind a build is invisible in the finished artifact.
+Six weeks later the code shows what was decided and nothing about what was rejected,
+or why.
 
 - **Never edit, rewrite, condense or delete a past entry.** The log grows; it does not
   shrink. A wrong conclusion from last month stays — if it was corrected later, add a
@@ -460,9 +467,9 @@ nothing. Do not restate the global rules.>
 **Leave nothing unfilled.** An entry you could not determine and did not ask about is
 a rule nobody can follow — either get the answer or delete the line.
 
-**A section the project does not have gets deleted, not left blank.** No build log?
-Remove the line. A rule pointing at something that does not exist is worse than no
-rule.
+**A section the project does not have gets deleted, not left blank.** A rule pointing
+at something that does not exist is worse than no rule. Two things are never deleted
+this way — the README and the build log. If either is missing, create it.
 
 ## When a feature earns a spec, write one
 
