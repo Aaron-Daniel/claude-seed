@@ -1,27 +1,31 @@
 # claude-seed
 
-A starting `CLAUDE.md` for new projects — work and personal.
+The global `CLAUDE.md` — the rules Claude Code follows in every session, plus the
+definitions of the two lower-level `CLAUDE.md` files so a new project can be set up
+without explaining the system each time.
 
-`CLAUDE.md` is the file Claude Code reads at the start of every session in a repo. This
-is the version to begin from, so a new project inherits a working style instead of
-being written from scratch each time.
+## Three levels
 
-## How to use it
+| file | scope | holds |
+|---|---|---|
+| `~/.claude/CLAUDE.md` | the machine, every session | the rules, and the shape of the other two |
+| `<repo>/CLAUDE.md` | one project | that project's **answers** — commands, paths, hierarchy, quirks |
+| `<feature-dir>/CLAUDE.md` | one feature | that feature's **spec** — purpose, flow, and what it does NOT do |
 
-1. Copy `CLAUDE.seed.md` into the new project's root, renamed to `CLAUDE.md`.
-2. Fill in every `<TODO: ...>` slot — test command, doc paths, log location, and the
-   document hierarchy. An unfilled slot is a rule nobody can follow.
-3. Delete the instruction comment at the top.
-4. Delete any section the project genuinely does not have. A rule that describes
-   something nonexistent is worse than no rule.
+The rules live only at the top level. A repo file that restates them is a second copy
+to keep right, so the lower two carry answers and specs — never rules.
 
-Everything in the file loads into every session, so keep it short as it grows.
-Long-form detail belongs in the project's `README.md`, its architecture doc, or its
-build log — not here.
+## Installing it
+
+Copy `CLAUDE.seed.md` to `~/.claude/CLAUDE.md`. Anything personal to that machine —
+paths to local skills, tooling only you have — goes at the end under a
+`# This machine only` heading, so the general rules stay portable.
+
+Once it is in place, Claude already knows how to set up a new project: when a repo has
+no `CLAUDE.md`, it works out what it can from the repo, asks about what it cannot, and
+writes the file. Both templates are in the seed itself.
 
 ## What's in it
-
-Fifteen sections, in four groups.
 
 **How to work and communicate**
 - Partner, not subordinate — push back on bad ideas, then defer
@@ -47,8 +51,5 @@ Fifteen sections, in four groups.
 - PR review paradigm — build agent and review agent, never self-approve
 - Task-completion recap — what shipped, what is still running, what is left
 
-## Where it came from
-
-Assembled from two working project files and cut down: rules kept, project specifics
-and past incidents removed, then audited to confirm nothing of substance was lost in
-the compression.
+**Setting up a project** — when to write a repo `CLAUDE.md`, what to determine before
+asking, what to ask, and the templates for both the repo file and a feature spec.

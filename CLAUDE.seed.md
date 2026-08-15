@@ -1,12 +1,27 @@
 # CLAUDE.md
 
-<!-- Fill every <TODO: ...> slot, then delete this comment. An unfilled slot is a
-     rule nobody can follow. Everything here loads into every session — keep it
-     short. Long-form detail belongs in the README, the architecture doc, or the
-     build log, not here. -->
+How I want work done, everywhere. This file also defines the two lower-level
+`CLAUDE.md` files — one per repo, one per feature — so a new project can be set up
+without being told how each time.
 
-<TODO: one line — what this project is. The full explanation and the run commands
-live in `README.md`; do not restate them here, or the two will drift.>
+## The three levels
+
+| file | scope | holds |
+|---|---|---|
+| `~/.claude/CLAUDE.md` | this machine, every session | the rules below, and the shape of the other two |
+| `<repo>/CLAUDE.md` | one project | that project's **answers** — commands, paths, hierarchy, quirks |
+| `<feature-dir>/CLAUDE.md` | one feature | that feature's **spec** — purpose, flow, and what it does NOT do |
+
+**The rules live here and are not repeated downward.** A repo file that restates them
+is two copies to keep right. Where a rule below needs a project-specific value — a
+test command, a doc path — it is named in the repo file and referred to here, never
+duplicated.
+
+**Setting these up is not a separate task you wait to be asked for.** See "Setting up
+a project" at the end: if a repo has no `CLAUDE.md`, creating it is part of the first
+real piece of work.
+
+---
 
 ## Partner, not subordinate
 
@@ -127,13 +142,10 @@ measurement run here, a reference actually opened, or the document of record.
 Before doing something, ask whether it contradicts a higher-level component already
 written down. Every turn — including when the request comes from the user.
 
-1. <TODO: the highest-level doc — the plan or spec everything else serves>
-2. <TODO: the next level down — component or subsystem designs>
-3. <TODO: the artifacts those designs produce>
-4. Code and prompts — what builds and checks all of the above
-
-A change at any level is checked against every level above it. Changing level 1 is a
-real decision with downstream cost — surface it as one.
+**The repo's `CLAUDE.md` names this project's hierarchy**, top down — usually a plan
+or spec, then component designs, then the artifacts those produce, then the code. A
+change at any level is checked against every level above it. Changing the top level is
+a real decision with downstream cost — surface it as one.
 
 When a request conflicts with a higher document, **say so before building and name
 the clause it collides with**, then follow the decision made. If the override stands,
@@ -170,9 +182,9 @@ first piece of real work.** It answers two things:
 
 ## The architecture doc is updated in the SAME change
 
-<TODO: path to the architecture doc> describes how this system actually works. Not a
-snapshot — updated in the same piece of work that changes what it describes, the way
-a test is. Update it when you:
+The repo's `CLAUDE.md` names where it lives. It describes how the system actually
+works — not a snapshot, but updated in the same piece of work that changes what it
+describes, the way a test is. Update it when you:
 
 - add, remove or rename a **component** — service, module, job, script, LLM agent
 - change the **interface between two components**, or **what a component depends on**
@@ -202,14 +214,8 @@ housekeeping.
 A feature that earns one gets its own `CLAUDE.md`, **in the directory holding its main
 code**, so it loads exactly when that code is worked on. Not one per layer, not one per
 folder. A feature with no home directory is worth saying out loud. It states intended
-behavior — a spec, never a report on what the code currently does:
-
-- **What the feature is for**, and what it is responsible for.
-- **What the user experience and flow should be** — what the user does, what they see,
-  what happens in what order.
-- **What it explicitly does NOT do.** Required, not optional. It is what stops a
-  feature quietly growing, and the only part that cannot be reverse-engineered from
-  the code.
+behavior — a spec, never a report on what the code currently does. Its shape is at the
+end of this file.
 
 **The user owns it. Never edit a spec without asking.** Specs change through a decision,
 never as a side effect of other work. "The spec is out of date, here is what I think it
@@ -249,8 +255,8 @@ asserts, before the code exists.
 
 ## Build and decision logs are append-only
 
-<TODO: path to the build/decision log, e.g. `dev/build_context.md`> records how this
-was built: what was tried, what worked, what did not.
+The repo's `CLAUDE.md` names where the log lives. It records how the project was built:
+what was tried, what worked, what did not.
 
 - **Never edit, rewrite, condense or delete a past entry.** The log grows; it does not
   shrink. A wrong conclusion from last month stays — if it was corrected later, add a
@@ -267,12 +273,12 @@ If a session ends without an entry for work that was done, that work is undocume
 
 ## TDD (mandatory for functionality)
 
-1. **Red** — write the failing test first (in <TODO: test directory>), run it, confirm
-   it fails for the expected reason.
+1. **Red** — write the failing test first, in the test directory the repo's
+   `CLAUDE.md` names. Run it, confirm it fails for the expected reason.
 2. **Green** — the minimal change that makes it pass; run and confirm.
 3. **Refactor** with the suite green. Tests land in the same commit as the code.
 
-**Verification = `<TODO: full-suite command>` exiting 0.** Never hand-roll a sweep
+**Verification = the repo's full-suite command exiting 0.** Never hand-roll a sweep
 loop — loop exit-status, `;` sequencing and a stray `exit 0` each swallow failures
 while printing green. No commit on a non-zero sweep. **Run it for real too**, using
 the README's run commands: a green suite is not proof it works in the actual app.
@@ -301,8 +307,8 @@ exit 0 and be telling the truth about something other than what you asked for.
 - **Verify a merge landed by CONTENT** — grep the merged ref for the code that was
   meant to arrive. A sha proves a commit exists, not that a fix is in that branch.
 - **A reviewer reviews the PUSHED diff** (`gh pr diff <n>`), never the local worktree.
-- **Where the failure mode is mechanical, add a guard rather than remembering.**
-  <TODO: guard command or git hook, if this project has one.>
+- **Where the failure mode is mechanical, add a guard rather than remembering** — the
+  repo's `CLAUDE.md` names any guard command or hook this project has.
 
 ### A check that did not run must never report success
 
@@ -335,7 +341,7 @@ A feature without logging is incomplete — reviewers should flag it.
 - **Instrument every async operation and user interaction with timers**: start, end,
   duration in ms, short content preview. Cover network calls, model calls,
   transitions, retries, interruptions, gaps between steps.
-- **Persistent JSONL** at <TODO: log path>, gitignored.
+- **Persistent JSONL**, at the path the repo's `CLAUDE.md` names, gitignored.
 - **Read the logs before guessing.** Diagnosing an issue and verifying a feature both
   start in the log — reconstruct the timeline and find the gap, do not theorize.
 - **Never log a secret.** Passwords, API keys, tokens, auth headers, connection
@@ -344,9 +350,9 @@ A feature without logging is incomplete — reviewers should flag it.
   (`Authorization: Bearer <redacted, 64 chars>`), never its value. Handing a whole
   request or response object to the logger is the usual way this goes wrong.
 - Previews may contain user-derived data. That is why logs stay local-only,
-  gitignored, and pruned after <TODO: N> days. Never ship them anywhere.
-  **Local-only and gitignored is not protection** — the file is still on disk, in
-  backups, and readable by anything else on the machine.
+  gitignored, and pruned on the schedule the repo's `CLAUDE.md` names. Never ship them
+  anywhere. **Local-only and gitignored is not protection** — the file is still on
+  disk, in backups, and readable by anything else on the machine.
 
 ## PR review paradigm (mandatory for every feature)
 
@@ -393,3 +399,104 @@ headings, never a narrative, a log dump, or a copy of the last recap.
   launched to do.
 - **Plain human language** — see "Write plainly". Someone who has not been following
   should get it on one read and know whether they need to do anything.
+
+---
+
+# Setting up a project
+
+## When a repo has no CLAUDE.md, write one
+
+Do it as part of the first real piece of work, not as a separate task to be asked for.
+Same for a repo whose `CLAUDE.md` is missing entries below.
+
+**Work out what you can before asking anything.** Read the repo first — `package.json`
+scripts, `Makefile`, `pyproject.toml`, CI workflow files, the existing test directory,
+the README. Most of the commands are already written down somewhere. Asking for what
+is sitting in `package.json` wastes the user's time and signals you did not look.
+
+**Then ask about what cannot be read**, in one batch rather than one at a time:
+
+- the document hierarchy — which doc outranks which, and what the top one is
+- whether there is a build/decision log, and where it should live
+- log retention, if the project logs user-derived content
+- anything about the project that would surprise someone reading only the code
+
+**Ask nothing at all if the answers are all determinable** — write the file and say
+what you inferred and from where, so a wrong guess is easy to spot.
+
+### What the repo CLAUDE.md contains
+
+Its job is this project's **answers**, not a copy of the rules above.
+
+```markdown
+# CLAUDE.md
+
+<one line: what this project is. The full explanation and the run commands live in
+README.md — do not restate them here, or the two will drift.>
+
+## Commands
+- Full suite (verification, must exit 0): `<command>`
+- Run it for real: `<command>`   ← or "see README.md"
+- Guard / pre-commit hook, if any: `<command>`
+
+## Where things live
+- Tests: `<dir>`
+- Architecture doc: `<path>`
+- Build / decision log: `<path>`
+- Interaction logs: `<path>`, pruned after `<N>` days
+
+## Document hierarchy (highest first)
+1. <the plan or spec everything else serves>
+2. <component or subsystem designs>
+3. <the artifacts those designs produce>
+4. Code and prompts
+
+## This project only
+<Anything true here that is not true generally: a constraint, a hard-won gotcha, a
+convention that will look wrong without explanation. Delete the heading if there is
+nothing. Do not restate the global rules.>
+```
+
+**Leave nothing unfilled.** An entry you could not determine and did not ask about is
+a rule nobody can follow — either get the answer or delete the line.
+
+**A section the project does not have gets deleted, not left blank.** No build log?
+Remove the line. A rule pointing at something that does not exist is worse than no
+rule.
+
+## When a feature earns a spec, write one
+
+In the directory holding that feature's main code. Written before the work, per the
+rules above. It is a spec — intended behavior, not a description of the code.
+
+```markdown
+# <Feature name>
+
+## What it is for
+<Plain words: what this does and who for. Two or three sentences.>
+
+## Responsibilities
+<What this feature owns. The decisions it makes, the data it is the source of truth
+for, what other parts rely on it to do.>
+
+## User experience and flow
+<What the user does, what they see, what happens in what order. Include the error
+paths and the empty state — those are the parts that get skipped.>
+
+## What it does NOT do
+<Required. The boundary: what it deliberately leaves to something else, what it does
+not handle, what is out of scope. This is what stops the feature quietly growing.>
+
+## Behaviors and their tests
+| behavior | test |
+|---|---|
+| <a statement from above that can be asserted> | <test name or file> |
+```
+
+**Every behavior above gets a test, and the test names the behavior** so the two can
+be traced to each other. A behavior with no test is a defect in the spec — it is a
+promise nobody is holding the code to.
+
+**The "does NOT do" list is checked at review, not by tests** — except where a negative
+is mechanical ("makes no network call", "never writes to that table"), which gets
+tested like anything else.
