@@ -263,8 +263,11 @@ there is no build log yet, starting one is part of the first real piece of work.
 **Where it lives, by convention:** the project's log is `dev/build_context.md` at the
 repo root. Anything substantial built inside the project keeps its own
 `build_context.md` in the directory holding it (`prompts/build_context.md`,
-`skills/<name>/build_context.md`). The repo's `CLAUDE.md` still names the paths, so a
-reader never has to guess; a project that inherited another name says so there.
+`skills/<name>/build_context.md`). The test is whether its history would otherwise be
+lost in the project's: a package in a monorepo or a prompt tuned on its own gets one; a
+repo that is one thing — one prompt, one skill — keeps only `dev/build_context.md`. The
+repo's `CLAUDE.md` lists which directories carry one, and any log that kept an older
+name.
 
 It exists because the reasoning behind a build is invisible in the finished artifact.
 Six weeks later the code shows what was decided and nothing about what was rejected,
@@ -429,7 +432,8 @@ is sitting in `package.json` wastes the user's time and signals you did not look
 **Then ask about what cannot be read**, in one batch rather than one at a time:
 
 - the document hierarchy — which doc outranks which, and what the top one is
-- whether there is a build/decision log, and where it should live
+- if a build log already exists under another name, whether it moves to
+  `dev/build_context.md` or keeps its name
 - log retention, if the project logs user-derived content
 - anything about the project that would surprise someone reading only the code
 
@@ -454,7 +458,8 @@ README.md — do not restate them here, or the two will drift.>
 ## Where things live
 - Tests: `<dir>`
 - Architecture doc: `<path>`
-- Build / decision log: `dev/build_context.md` (plus `<dir>/build_context.md` for anything substantial built inside)
+- Build / decision log: `dev/build_context.md`
+- Build logs of things built inside, one each: `<dir>/build_context.md`
 - Interaction logs: `<path>`, pruned after `<N>` days
 
 ## Document hierarchy (highest first)

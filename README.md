@@ -42,7 +42,7 @@ writes the file. Both templates are in the seed itself.
 - README.md is always current
 - The architecture doc is updated in the same change
 - Every real feature has a spec, and the user owns it
-- Build and decision logs are append-only (`dev/build_context.md`, plus one per thing built inside)
+- Build and decision logs are append-only (`dev/build_context.md`, plus one in the directory of anything substantial built inside)
 
 **Engineering**
 - TDD, plus: a command reporting success is not proof it did the thing, and a check
