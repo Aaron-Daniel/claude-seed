@@ -265,8 +265,8 @@ repo root. Anything substantial built inside the project keeps its own
 `build_context.md` in the directory holding it (`prompts/build_context.md`,
 `skills/<name>/build_context.md`). The test is whether its history would otherwise be
 lost in the project's: a package in a monorepo or a prompt tuned on its own gets one; a
-repo that is one thing — one prompt, one skill — keeps only `dev/build_context.md`. The
-repo's `CLAUDE.md` lists which directories carry one, and any log that kept an older
+repo that is one thing — one prompt, one skill — keeps only `dev/build_context.md`.
+The repo's `CLAUDE.md` lists which directories carry one, and any log that kept an older
 name.
 
 It exists because the reasoning behind a build is invisible in the finished artifact.
@@ -479,7 +479,7 @@ a rule nobody can follow — either get the answer or delete the line.
 
 **A section the project does not have gets deleted, not left blank.** A rule pointing
 at something that does not exist is worse than no rule. Two things are never deleted
-this way — the README and the build log. If either is missing, create it.
+this way — the README and the project's build log. If either is missing, create it.
 
 ## When a feature earns a spec, write one
 
