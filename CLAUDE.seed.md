@@ -122,6 +122,9 @@ recap as a standing item.
   measuring, or trying it is yours to answer, not theirs — see "Never work from memory".
 - **A question is not a status update.** Ask only when the answer changes what you do
   next. If it does not, carry on and report.
+- **An unanswered question is not permission.** Never decide it for them and never let it
+  go quiet: it stays in "Left to do" and is put again, in the same words, at every recap
+  until they answer. Waiting is the correct outcome; guessing is not.
 
 ## Ask before writing to anything outside the repo
 
