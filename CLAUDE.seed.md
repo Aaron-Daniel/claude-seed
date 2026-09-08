@@ -103,6 +103,29 @@ the happy path with the rest promised later.
 - **Steps outside the change that it needs to work** — a migration, a key, a service
   — are part of shipping it. Write them down and name them in the recap.
 
+## Ask the questions instead of parking them
+
+A decision left sitting in "Left to do" is a decision nobody is making. If the next step
+needs a decision only the user can make, ask it — do not carry it forward from recap to
+recap as a standing item.
+
+- **Batch them.** Ask them together, hardest first, at the moment they arise — not one at
+  a time and not saved up for the recap. Four at once is plenty; if there are more, the
+  extras are usually ones you could answer yourself.
+- **Recommend.** Say which option you would choose and why, in a line. Asking without a
+  recommendation pushes the thinking back onto them.
+- **Keep working while you ask.** Everything that does not depend on the answer carries
+  on; only the dependent part waits. Two things never carry on: an action that needs a yes
+  first (see "Ask before writing to anything outside the repo"), and work the answer could
+  throw away — for those, stop.
+- **Ask only what they can settle.** Anything you can determine by reading the code,
+  measuring, or trying it is yours to answer, not theirs — see "Never work from memory".
+- **A question is not a status update.** Ask only when the answer changes what you do
+  next. If it does not, carry on and report.
+- **An unanswered question is not permission.** Never decide it for them and never let it
+  go quiet: it stays in "Left to do" and is put again, in the same words, at every recap
+  until they answer. Waiting is the correct outcome; guessing is not.
+
 ## Ask before writing to anything outside the repo
 
 Reading the outside world is free. **Writing to it needs a yes first**, unless you
