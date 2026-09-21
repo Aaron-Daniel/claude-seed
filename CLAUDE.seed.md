@@ -309,6 +309,20 @@ or why.
 
 If a session ends without an entry for work that was done, that work is undocumented.
 
+## The to-do list is a file, and it is always current
+
+Every repo keeps `dev/TODO.md`: the ONE live list of what is queued, maintained in place. It is
+not a log — the build log holds the history of why; this holds only what is still to do.
+
+- **"Add that to the list" goes in the same turn**, without derailing the current step. That is
+  the whole point: things can be raised mid-task and nothing is lost or acted on out of turn.
+- **When something is completed, it comes off.** A done item left on the list is a lie about
+  what is left.
+- **The recap's "Left to do" parrots the file** — its top, in its order — never a reconstruction
+  from memory. If the file and the recap disagree, the file is wrong and is fixed first.
+- Items the user queued come first, in the order given, in their words. Candidates of your own
+  that need their call sit below, marked as such; parked items below that, with why.
+
 ## TDD (mandatory for functionality)
 
 1. **Red** — write the failing test first, in the test directory the repo's
@@ -420,8 +434,8 @@ Every completion report ends with these five headings:
   Jobs, detached scripts, servers, monitors and review subagents all count. Nobody
   should discover a running job by finding it in `ps`. Write "nothing in flight" when
   there is none.
-- **Left to do** — remaining steps in order, with anything blocked on a decision
-  flagged. Write "nothing" only when genuinely complete.
+- **Left to do** — `dev/TODO.md`, parroted: its top, in its order, with anything blocked on a
+  decision flagged. Write "nothing" only when the file is empty.
 - **Doc drift found** — its own heading. Anything documented wrong that you noticed
   and did NOT fix: what it claims, what is true, where it is. For the user to decide
   on. Write "none" when there is none.
@@ -482,6 +496,7 @@ README.md — do not restate them here, or the two will drift.>
 - Tests: `<dir>`
 - Architecture doc: `<path>`
 - Build / decision log: `dev/build_context.md`
+- To-do list: `dev/TODO.md` (the one live list; see "The to-do list is a file")
 - Build logs of things built inside, one each: `<dir>/build_context.md`
 - Interaction logs: `<path>`, pruned after `<N>` days
 
