@@ -243,7 +243,8 @@ end of this file.
 **The user owns it. Never edit a spec without asking.** Specs change through a decision,
 never as a side effect of other work. "The spec is out of date, here is what I think it
 should say" is the job; editing it quietly is not. Stale and flagged beats silently
-corrected.
+corrected. **Asking means a question in chat** — options and a recommendation — never a PR
+for the user to read (see "PR review paradigm").
 
 **When the code and the spec disagree, raise it — never silently pick a winner.** If
 the conflict changes what you would build, stop and ask. If not, build to the spec and
@@ -417,6 +418,11 @@ A feature without logging is incomplete — reviewers should flag it.
    updated diff to the **same** reviewer so its context carries. Repeat until
    `APPROVED`.
 4. **Merge only after an explicit `APPROVED`.** Never self-approve.
+5. **Never ask the user to review a PR** — not code, not docs, not spec text. Reviewer
+   subagents review every PR; the user never reads a diff or "approves PR #N". When
+   something in it is genuinely the user's call (a spec's behaviour, a design choice),
+   ask it in chat as a question with options and a recommendation, write the answer in
+   yourself, and quote it where it is recorded.
 
 Disagreement with a finding goes to the reviewer and into the PR description before
 merging. Blocking findings must be fixed; non-blocking ones may be deferred with a
